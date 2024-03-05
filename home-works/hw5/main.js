@@ -140,3 +140,15 @@ const exchange = (sumUAH, currencyValues, exchangeCurrency) =>{
 
 console.log(exchange(10000, arrExchange, 'USD'));
 console.log(exchange(10000, arrExchange, 'EUR'));
+
+
+
+
+
+
+
+
+
+
+
+

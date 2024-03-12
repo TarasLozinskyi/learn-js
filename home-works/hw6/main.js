@@ -163,9 +163,10 @@ console.log('------------------------------------')
 const diamonds = cards.filter(item => item.cardSuit === 'diamonds');
 console.log(diamonds);
 console.log('------------------------------------')
+
 // - всі трефи від 9 та більше
 
-const allNumCards = cards.filter(item => item.cardSuit === 'clubs' && item.value).splice(4);
+const allNumCards = cards.filter(item => item.cardSuit === 'clubs').splice(4);
 console.log(allNumCards);
 console.log('------------------------------------')
 
@@ -180,9 +181,9 @@ console.log('------------------------------------')
 const funCardSuid = (arr, cardSuid) => {
     return arr.reduce((prev, curr) => {
         if (curr.cardSuit === cardSuid) {
-            prev.push(curr)
+            return prev.push(curr)
         }
-        return prev;
+        // return prev;
     }, []);
 }
 
@@ -276,8 +277,9 @@ console.log(searchSass(coursesArray));
 
 // --написати пошук всіх об'єктів, в який в modules є docker
 const searchDocker = (arr)=>{
-    return arr.filter((item)=> item.modules.some(elem=> elem==='docker'
+    return arr.filter((item)=> item.modules.find(elem=> elem==='docker'
     ));
 }
+
 
 console.log(searchDocker(coursesArray));

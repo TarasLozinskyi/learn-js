@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<style>
+
+</style>
+<body>
+<button id="prev" disabled>prev</button>
+<button id="next">next</button>
+<div id="box"></div>
+
+
+<script>
+  const prev = document.getElementById('prev');
+  const next = document.getElementById('next');
+
+  const arr =[];
+let index =0;
+  function createObj(id){
+      return {
+          id: id,
+          name: 'Anna',
+          age:22,
+      }
+  }
+
+  for (let i = 0; i < 100; i++) {
+      arr.push(createObj(i));
+  }
+
+
+  function displayObj(index){
+      let children = [];
+      const box = document.getElementById('box');
+      if (index>=90 ) {
+          next.setAttribute('disabled', 'disabled');
+      } else  {
+          next.removeAttribute('disabled');
+      }
+      if(index <=0){
+          prev.setAttribute('disabled', 'disabled');
+      }
+      else {
+          prev.removeAttribute('disabled')
+      }
+
+      for (let i = index; i < index+10 ; i++) {
+          let block = document.createElement('div');
+          let name = document.createElement('div');
+          let age = document.createElement('div');
+          let id = document.createElement('div');
+          name.innerText= `Name: ${arr[i].name}`
+          age.innerText = `Age: ${arr[i].age}`
+          id.innerText = `Id ${arr[i].id+1}`
+
+          block.append(id, name, age);
+          children.push(block);
+
+      }
+        box.replaceChildren(...children);
+
+  }
+  displayObj(index)
+
+  next.addEventListener('click', ()=> displayObj(index+= 10))
+  prev.addEventListener('click', ()=> displayObj(index -=10));
+
+</script>
+</body>
+</html>

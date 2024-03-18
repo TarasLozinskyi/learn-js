@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script >
+    const block = document.createElement('div');
+    let count = localStorage.getItem('count')|| '0';
+    let newCount = (+count +1).toString();
+    block.innerText = newCount;
+    localStorage.setItem("count", newCount );
+    document.body.appendChild(block);
+
+
+</script>
+</body>
+</html>

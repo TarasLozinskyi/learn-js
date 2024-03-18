@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<style>
+    body{
+        max-width: 700px;
+        padding-top: 30px;
+        margin: 0 auto;
+
+    }
+    form{
+        display: flex;
+        justify-content: center;
+    }
+
+  .table{
+      margin-top: 30px;
+  }
+
+  .line{
+      width: 100%;
+      height: 30px;
+      display: flex;
+      justify-content: space-between;
+  }
+  .cell{
+      /*background: blue;*/
+      height: 100%;
+      width: 100%;
+      border:1px solid black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+  }
+</style>
+<body>
+
+  <input type="text" name="line" id="line" placeholder="line">
+  <input type="text" name ='numCell' id="numCell" placeholder="cell">
+  <input type="text" name="contentCell" id="contentCell" placeholder="content">
+  <button id="btn">Add</button>
+
+  <div id="table"></div>
+
+<script>
+
+    // *** Створити 3 інпута та кнопку. Один визначає кількість рядків, другий - кількість ячеєк, третій вмиіст ячеєк.
+    //     При натисканні кнопки, вся ця інформація зчитується і формується табличка, з відповідним вмістом.
+    //  (Додатковачастина для завдання)
+    const line = document.getElementById('line')
+    const numCell =document.getElementById('numCell');
+    const contentCell = document.getElementById('contentCell');
+    const btn = document.getElementById('btn');
+    const table = document.getElementById('table');
+    table.classList.add('table');
+
+    function addLine(){
+        const lineArr = [];
+        for (let i = 0; i < line.value; i++) {
+            let divLine = document.createElement('div')
+            for (let j = 0; j < numCell.value; j++) {
+                let divCell = document.createElement('div')
+                divCell.classList.add('cell')
+                divCell.innerText = contentCell.value;
+                divLine.append(divCell);
+
+            }
+            divLine.classList.add('line')
+            lineArr.push(divLine);
+        }
+        line.value = '';
+        numCell.value = '';
+        contentCell.value = '';
+        table.append(...lineArr);
+        console.log(table)
+    }
+
+    btn.addEventListener('click',function (e){
+        e.preventDefault();
+        addLine();
+
+    });
+</script>
+
+</body>
+</html>

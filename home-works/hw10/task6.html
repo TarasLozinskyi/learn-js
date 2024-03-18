@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<input type="number" value="18" id="age">
+<button id="btn">Add</button>
+
+<script>
+    const btn = document.getElementById('btn');
+    const input = document.getElementById('age');
+    const message = document.createElement('div')
+    btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (input.value >= 18) {
+            message.innerText = 'Вам більше 18 років'
+            message.style.color = 'black';
+        } else {
+            message.innerText = 'Вам менше 18'
+            message.style.color = 'red';
+        }
+        document.body.appendChild(message)
+    })
+</script>
+
+</body>
+</html>
